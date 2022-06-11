@@ -14,8 +14,8 @@ public class HW1 : MonoBehaviour
     {
         _value1 = Random.RandomRange(0, 10);
         _value2 = Random.RandomRange(0, 10);
-        _value3 = Random.RandomRange(0, 3);
-
+        _value3 = Random.RandomRange(0, 4);
+   
         Debug.Log($"Value1 = {_value1}, Value2 = {_value2}, Value3 = {_value3}");
 
         //cycle for
@@ -87,6 +87,11 @@ public class HW1 : MonoBehaviour
                 Debug.Log("Value2 = 0. Unable to perform division operation");
             }   
         }
+        else if (value3 == 4)
+        {
+            result = System.Convert.ToInt32(Mathf.Pow(value1,value2));
+            Debug.Log($"Operation ^. Result: {value1} ^ {value2} = {result}");
+        }
         else
         {
             Debug.Log("Wrong value3");
@@ -125,7 +130,11 @@ public class HW1 : MonoBehaviour
                 {
                     Debug.Log("Value2 = 0. Unable to perform division operation");
                     break;
-                }   
+                }
+            case 4:
+                result = System.Convert.ToInt32(Mathf.Pow(value1, value2));
+                Debug.Log($"Operation ^. Result: {value1} ^ {value2} = {result}");
+                break;
         }
     }
 
