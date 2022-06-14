@@ -37,7 +37,10 @@ public class RandomCalculator : MonoBehaviour
                     {
                         Debug.Log("Операция не может быть проведена: делитель равен нулю");
                     }
-                    Debug.Log(value1 / value2);
+                    else
+                    {
+                        Debug.Log(value1 / value2);
+                    }
                     break;
             }
 
