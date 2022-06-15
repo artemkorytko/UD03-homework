@@ -56,10 +56,7 @@ public class HW1 : MonoBehaviour
     private void TaskRandomCalculatorWithIfElse(int value1, int value2, int value3)
     {
         int result;
-        value1 = _value1;
-        value2 = _value2;
-        value3 = _value3;
-
+        
         if (value3 == 0)
         {
             result = value1 + value2;
@@ -101,10 +98,7 @@ public class HW1 : MonoBehaviour
     private void TaskRandomCalculatorWithSwitchCase (int value1, int value2, int value3)
     {
         int result;
-        value1 = _value1;
-        value2 = _value2;
-        value3 = _value3;
-
+        
         switch(value3)
         {
             case 0:
