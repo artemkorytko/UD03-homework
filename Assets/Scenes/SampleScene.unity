@@ -311,6 +311,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1062237891}
   - component: {fileID: 1062237890}
+  - component: {fileID: 1062237892}
   m_Layer: 0
   m_Name: ConsoleLogic
   m_TagString: Untagged
@@ -325,7 +326,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1062237889}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 97dc6993f462eeb4d9b4c62ac851743e, type: 3}
   m_Name: 
@@ -345,3 +346,15 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1062237892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1062237889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b43da0e573bfa1439f71cb562d20594, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
