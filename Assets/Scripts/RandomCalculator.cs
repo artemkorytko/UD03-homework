@@ -37,11 +37,14 @@ public class RandomCalculator : MonoBehaviour
         }   
         if(value3 == 3)
         {
-            Debug.Log(value1 / value2);
-            print("division");
-            if (value2 == 0)
+            if (value2 <1)
             {
-                Debug.Log("can not divide by zero");
+                Debug.Log("ERROR");
+            }
+            if (value2 > 0)
+            {
+                Debug.Log(value1 / value2);
+                print("division");
             }
         }
         if(value3 == 4)
