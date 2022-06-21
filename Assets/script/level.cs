@@ -4,52 +4,52 @@ using UnityEngine;
 
 public class Level : MonoBehaviour
 {
-    private GameItem[] _gameItems;
-    private int _itemsCount;
+    private GameItem[] _gameItems;   // наши айтемы на сцене ( [] синтексис массива )
+    private int _itemsCount;         // считает количество объектов
 
-    public event Action OnCompleted;
-    public event Action<string> OnItemListChanged;
+    public event Action OnCompleted;  // метод эвента, вызова экшена ( уровень пройден)
+    public event Action<string> OnItemListChanged; // событие , ( убираем объект, реагируем на изменение)
 
-    public void Initialize()
+    public void Initialize() // инициализирует лвл и ГМ
     {
-        _gameItems = GetComponentsInChildren<GameItem>();
+        _gameItems = GetComponentsInChildren<GameItem>(); //находим компоненты
 
-        for (int i = 0; i < _gameItems.Length; i++)
+        for (int i = 0; i < _gameItems.Length; i++)  // создает циклы,перебирает элементы в масиве
         {
-            _gameItems[i].OnFind += OnFindItem;
+            _gameItems[i].OnFind += OnFindItem; // подписка на событие, найденый объект
         }
 
-        _itemsCount = _gameItems.Length;
+        _itemsCount = _gameItems.Length; // возвращает количество элементов в масиве
     }
 
-    private void OnFindItem(string name)
+    private void OnFindItem(string name)     // метод уменьшающий наше количество предметов 
     {
-        _itemsCount--;
+        _itemsCount--; // вычетание количество объектов
 
-        if (_itemsCount > 0)
+        if (_itemsCount > 0) // обновление листа , если объектов больше 0
         {
-            OnItemListChanged.Invoke(name);
+            OnItemListChanged.Invoke(name); // вычетаем объект , вызывает все методы на кого подписан
         }
-        else
+        else                  // завершение игры 
         {
             OnCompleted.Invoke();
         }
     }
 
-    public Dictionary<string, GameItemData> GetItemDictionary()
+    public Dictionary<string, GameItemData> GetItemDictionary()  // создание массива у которого есть ключ и его значения 
     {
-        Dictionary<string, GameItemData> itemsData = new Dictionary<string, GameItemData>();
+        Dictionary<string, GameItemData> itemsData = new Dictionary<string, GameItemData>();  // ?
 
-        for (int i = 0; i < _gameItems.Length; i++)
+        for (int i = 0; i < _gameItems.Length; i++) // длина масива ?
         {
-            string key = _gameItems[i].Name;
-            if (itemsData.ContainsKey(key))
+            string key = _gameItems[i].Name; // идя ключа
+            if (itemsData.ContainsKey(key)) // проверка на ключ
             {
-                itemsData[key].IncreaseAmount();
+                itemsData[key].IncreaseAmount(); //  увелчиваем наше значение
             }
-            else
+            else // если нету
             {
-                itemsData.Add(key, new GameItemData(_gameItems[i].Sprite));
+                itemsData.Add(key, new GameItemData(_gameItems[i].Sprite)); // добавляем ключ
             }
         }
 
