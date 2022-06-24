@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 408790234249037245}
   m_Layer: 0
   m_Name: MainPlayer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -162,11 +162,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4ada05a4fb245ffb7499834bdc6ef88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _type: 0
+  _type: 1
   _maxHealth: 100
   _isActiveInUpdate: 0
   moveSpeed: 5
-  rotateSpeed: 80
+  rotateSpeed: 15
 --- !u!1001 &2488608576908557446
 PrefabInstance:
   m_ObjectHideFlags: 0
