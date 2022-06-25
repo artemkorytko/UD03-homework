@@ -1,17 +1,13 @@
-using System;
 using UnityEngine;
 
 namespace Moba
 {
     public class Mob : AnimatedPlayer
     {
-        [SerializeField] private Transform[] _patrolPoints;
-        [SerializeField] private float _minDistanceToPlayer;
-        
-        private Rigidbody _rigidbody;
-        private bool _isRun;
+        protected Rigidbody _rigidbody;
         private Vector3 _targetVector;
         private float _distanceToPlayer;
+        private float _minDistanceToPlayer = 1.6f;
 
         protected override void Awake()
         {
@@ -19,46 +15,63 @@ namespace Moba
             _rigidbody = GetComponent<Rigidbody>();
         }
 
-        private void Start()
+        protected virtual void Start()
         {
             SetActive(true);
         }
 
         protected override void Move()
         {
-            if (_targetVector != Vector3.zero & _distanceToPlayer > _minDistanceToPlayer)
+            if (IsHaveTarget() & !IsReadyToAttack())
             {
-                _rigidbody.MovePosition(_rigidbody.position + transform.forward * (moveSpeed * Time.deltaTime));
+                MovePosition();
             }
+        }
+
+        protected void MovePosition()
+        {
+            _rigidbody.MovePosition(_rigidbody.position + transform.forward * (moveSpeed * Time.deltaTime));
         }
 
         protected override void Rotate()
         {
-            if (_targetVector != Vector3.zero & _distanceToPlayer > _minDistanceToPlayer)
+            if (IsHaveTarget() & !IsReadyToAttack())
             {
-                _rigidbody.MoveRotation(Quaternion.Lerp(_rigidbody.rotation, Quaternion.LookRotation(_targetVector), rotateSpeed * Time.deltaTime));
+                MoveRotation(_targetVector);
             }
+        }
+
+        protected void MoveRotation(Vector3 target)
+        {
+            _rigidbody.MoveRotation(Quaternion.Lerp(_rigidbody.rotation, Quaternion.LookRotation(target), rotateSpeed * Time.deltaTime));
         }
 
         protected override void PlayAnimation()
         {
-            if (_targetVector != Vector3.zero && _distanceToPlayer > _minDistanceToPlayer)
+            if (IsHaveTarget() & !IsReadyToAttack())
             {
                 _animator.SetTrigger("Walk");
-                _isRun = true;
             }
 
-            if (_targetVector != Vector3.zero && _distanceToPlayer <= _minDistanceToPlayer)
+            if (IsHaveTarget() & IsReadyToAttack())
             {
                 _animator.SetTrigger("Attack");
-                _isRun = false;
             }
 
-            if (_targetVector == Vector3.zero)
+            if (!IsHaveTarget())
             {
                 _animator.SetTrigger("Idle");
             }
-            
+        }
+
+        protected bool IsReadyToAttack()
+        {
+            return _distanceToPlayer <= _minDistanceToPlayer;
+        }
+        
+        protected bool IsHaveTarget()
+        {
+            return _targetVector != Vector3.zero;
         }
 
         private void OnTriggerStay(Collider other)
@@ -71,7 +84,7 @@ namespace Moba
             }
         }
 
-        private void OnTriggerExit(Collider other)
+        protected virtual void OnTriggerExit(Collider other)
         {
             if (other.CompareTag("Player"))
             {

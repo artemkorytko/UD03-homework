@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2302857201838369553}
   - component: {fileID: 4034336498301414159}
   - component: {fileID: 3009788645367583449}
-  - component: {fileID: 1106505544}
+  - component: {fileID: 8048000253089354200}
   m_Layer: 0
   m_Name: MobTurtle
   m_TagString: Untagged
@@ -33,6 +33,7 @@ Transform:
   m_Children:
   - {fileID: 9063833272147861612}
   - {fileID: 5081552033128189463}
+  - {fileID: 29231099679558643}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -65,7 +66,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0.48, z: 0}
---- !u!114 &1106505544
+--- !u!114 &8048000253089354200
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -77,13 +78,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fb27763cd46463cafcc3475cbe6be25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _type: 3
+  _type: 0
   _maxHealth: 100
   _isActiveInUpdate: 0
-  moveSpeed: 4
-  rotateSpeed: 15
-  _patrolPoints: []
-  _minDistanceToPlayer: 1.6
+  moveSpeed: 2
+  rotateSpeed: 5
 --- !u!1 &2753204088896790680
 GameObject:
   m_ObjectHideFlags: 0
@@ -129,6 +128,37 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 15
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &7055415968913238390
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 29231099679558643}
+  m_Layer: 0
+  m_Name: MovingPoints
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &29231099679558643
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7055415968913238390}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2302857201838369553}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &9068117585612104046
 PrefabInstance:
   m_ObjectHideFlags: 0
