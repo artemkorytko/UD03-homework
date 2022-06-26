@@ -1,87 +1,23 @@
 fileFormatVersion: 2
 guid: b374e22ebb027494eaf0e15709666b60
 ModelImporter:
-  serializedVersion: 23
-  fileIDToRecycleName:
-    100000: Body
-    100002: BottomCover
-    100004: Eyeball
-    100006: //RootNode
-    100008: Head
-    100010: HornL01
-    100012: HornL02
-    100014: HornL03
-    100016: HornL04
-    100018: HornLTip01
-    100020: HornLTip02
-    100022: HornLTip03
-    100024: HornLTip04
-    100026: HornMid01
-    100028: HornMid02
-    100030: HornMid03
-    100032: HornMidTip01
-    100034: HornMidTip02
-    100036: HornMidTip03
-    100038: HornR01
-    100040: HornR02
-    100042: HornR03
-    100044: HornR04
-    100046: HornRTip01
-    100048: HornRTip02
-    100050: HornRTip03
-    100052: HornRTip04
-    100054: Shell
-    100056: Spine01
-    100058: Spine02
-    100060: TurtleShell
-    100062: UpperCover
-    400000: Body
-    400002: BottomCover
-    400004: Eyeball
-    400006: //RootNode
-    400008: Head
-    400010: HornL01
-    400012: HornL02
-    400014: HornL03
-    400016: HornL04
-    400018: HornLTip01
-    400020: HornLTip02
-    400022: HornLTip03
-    400024: HornLTip04
-    400026: HornMid01
-    400028: HornMid02
-    400030: HornMid03
-    400032: HornMidTip01
-    400034: HornMidTip02
-    400036: HornMidTip03
-    400038: HornR01
-    400040: HornR02
-    400042: HornR03
-    400044: HornR04
-    400046: HornRTip01
-    400048: HornRTip02
-    400050: HornRTip03
-    400052: HornRTip04
-    400054: Shell
-    400056: Spine01
-    400058: Spine02
-    400060: TurtleShell
-    400062: UpperCover
-    4300000: TurtleShell
-    7400000: GetHit
-    9500000: //RootNode
-    13700000: TurtleShell
+  serializedVersion: 21202
+  internalIDToNameTable:
+  - first:
+      74: 7055355079433224739
+    second: GetHit
   externalObjects: {}
   materials:
-    importMaterials: 0
+    materialImportMode: 2
     materialName: 0
     materialSearch: 1
-    materialLocation: 0
+    materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
+    removeConstantScaleCurves: 1
     motionNodeName: 
     rigImportErrors: 
     rigImportWarnings: 
@@ -91,7 +27,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 3
+    animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -102,6 +38,7 @@ ModelImporter:
     - serializedVersion: 16
       name: GetHit
       takeName: Take 001
+      internalID: 0
       firstFrame: 0
       lastFrame: 25
       wrapMode: 0
@@ -191,32 +128,41 @@ ModelImporter:
       maskType: 3
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
-    isReadable: 1
+    isReadable: 0
   meshes:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
-    importVisibility: 0
+    sortHierarchyByName: 1
+    importVisibility: 1
     importBlendShapes: 1
-    importCameras: 0
-    importLights: 0
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    bakeAxisConversion: 0
     preserveHierarchy: 0
-    indexFormat: 1
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 0
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 0.01
-    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -225,10 +171,10 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human: []
     skeleton: []
     armTwist: 0.5
@@ -238,13 +184,17 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Moba
@@ -50,6 +51,19 @@ namespace Moba
             {
                 _animator.SetTrigger("Idle");
                 _isRun = false;
+            }
+        }
+
+        public void PlayAnimationAttack()
+        {
+            _animator.SetTrigger("Attack");
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.CompareTag("Mob"))
+            {
+                other.GetComponent<Mob>().GetDamage(_damage);
             }
         }
     }

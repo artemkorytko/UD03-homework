@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Moba
@@ -8,6 +9,7 @@ namespace Moba
         private Vector3 _targetVector;
         private float _distanceToPlayer;
         private float _minDistanceToPlayer = 1.6f;
+        
 
         protected override void Awake()
         {
@@ -22,10 +24,7 @@ namespace Moba
 
         protected override void Move()
         {
-            if (IsHaveTarget() & !IsReadyToAttack())
-            {
-                MovePosition();
-            }
+            if (IsHaveTarget() & !IsReadyToAttack()) MovePosition();
         }
 
         protected void MovePosition()
@@ -35,10 +34,7 @@ namespace Moba
 
         protected override void Rotate()
         {
-            if (IsHaveTarget() & !IsReadyToAttack())
-            {
-                MoveRotation(_targetVector);
-            }
+            if (IsHaveTarget()) MoveRotation(_targetVector);
         }
 
         protected void MoveRotation(Vector3 target)
@@ -48,20 +44,11 @@ namespace Moba
 
         protected override void PlayAnimation()
         {
-            if (IsHaveTarget() & !IsReadyToAttack())
-            {
-                _animator.SetTrigger("Walk");
-            }
-
-            if (IsHaveTarget() & IsReadyToAttack())
-            {
-                _animator.SetTrigger("Attack");
-            }
-
-            if (!IsHaveTarget())
-            {
-                _animator.SetTrigger("Idle");
-            }
+            if (IsHaveTarget() & !IsReadyToAttack()) _animator.SetTrigger("Walk");
+            
+            if (IsHaveTarget() & IsReadyToAttack()) _animator.SetTrigger("Attack");
+            
+            if (!IsHaveTarget()) _animator.SetTrigger("Idle");
         }
 
         protected bool IsReadyToAttack()
@@ -72,6 +59,18 @@ namespace Moba
         protected bool IsHaveTarget()
         {
             return _targetVector != Vector3.zero;
+        }
+        
+        public override void GetDamage(int value)
+        {
+            base.GetDamage(value);
+            _animator.SetTrigger("Hit");
+        }
+
+        protected override void OnDeath()
+        {
+            _animator.SetTrigger("Die");
+            base.OnDeath();
         }
 
         private void OnTriggerStay(Collider other)
@@ -91,5 +90,6 @@ namespace Moba
                 _targetVector = new Vector3(0, 0, 0);
             }
         }
+        
     }
 }

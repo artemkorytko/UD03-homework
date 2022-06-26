@@ -6,6 +6,7 @@ namespace Moba
     {
         [SerializeField] private EPlayerType _type;
         [SerializeField] private int _maxHealth;
+        [SerializeField] protected int _damage;
         [SerializeField] private bool _isActiveInUpdate;
         private int _currentHealth;
         private bool _isActive;

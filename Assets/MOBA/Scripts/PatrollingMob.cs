@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Moba
@@ -29,6 +30,12 @@ namespace Moba
             base.Rotate();
         }
 
+        protected override void PlayAnimation()
+        {
+            if (!IsReadyToAttack()) _animator.SetTrigger("Walk");
+            if (IsHaveTarget() & IsReadyToAttack()) _animator.SetTrigger("Attack");
+        }
+
         private void AtPoint()
         {
             if (Vector3.Distance(_rigidbody.position, _movingPoints[_currentPoint].position)<=1f)
@@ -53,5 +60,6 @@ namespace Moba
             base.OnTriggerExit(other);
             SetPointVector();
         }
+        
     }
 }
