@@ -67,12 +67,6 @@ namespace Moba
             _animator.SetTrigger("Hit");
         }
 
-        protected override void OnDeath()
-        {
-            _animator.SetTrigger("Die");
-            base.OnDeath();
-        }
-
         private void OnTriggerStay(Collider other)
         {
             if (other.CompareTag("Player"))
