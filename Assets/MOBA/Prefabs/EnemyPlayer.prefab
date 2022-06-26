@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2272190091593174084}
   - component: {fileID: 74534816324607395}
+  - component: {fileID: 1354200276025168580}
   m_Layer: 0
   m_Name: EnemyPlayer
   m_TagString: Untagged
@@ -49,6 +50,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!114 &1354200276025168580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2272190091593174104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 962fe7f0d97bd10419fc350005d221c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _type: 0
+  _maxHealth: 0
+  _isActiveInUpdate: 0
+  moveSpeed: 5
+  rotateSpeed: 180
 --- !u!1001 &3121996440609521011
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -110,6 +128,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45288819fde2143449a96207b14db0bb, type: 3}
+--- !u!1 &2127415409945621499 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3951229398020017800, guid: 45288819fde2143449a96207b14db0bb, type: 3}
+  m_PrefabInstance: {fileID: 3121996440609521011}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &810939527874460646
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2127415409945621499}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.16255009, y: 1.3304204, z: 0.075077206}
+  m_Center: {x: 0.0024247607, y: -0.49533778, z: 0.0000002965865}
 --- !u!4 &4034266945412422149 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2066896392038131574, guid: 45288819fde2143449a96207b14db0bb, type: 3}
@@ -130,7 +166,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.3
+  m_Radius: 0.4
   m_Height: 1.2200515
   m_Direction: 2
-  m_Center: {x: 0.7, y: 0, z: 0.7022599}
+  m_Center: {x: 0, y: 0, z: 0.7022599}

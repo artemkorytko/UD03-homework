@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 namespace MOBA
 {
@@ -11,7 +12,7 @@ namespace MOBA
         private Joystick _joystick;
 
         private bool _isRun;
-
+        //private bool _isAtack;
         protected override void Awake()
         {
             base.Awake();
@@ -19,10 +20,11 @@ namespace MOBA
             _rigidbody = GetComponent<Rigidbody>();
         }
 
-        private void Start()
+        protected void Start()
         {
             SetActive(true);
         }
+        
 
         protected override void Move()
         {
@@ -32,7 +34,7 @@ namespace MOBA
             }
         }
 
-        protected sealed override void Rotate()
+        protected override void Rotate()
         {
             if (_joystick.Direction != Vector2.zero)
             {
@@ -48,12 +50,21 @@ namespace MOBA
             {
                 _animator.SetTrigger("Run");
                 _isRun = true;
+                
+
             }
 
             if (_isRun && _joystick.Direction == Vector2.zero)
             {
                 _animator.SetTrigger("Idle");
                 _isRun = false;
+                
+            }
+
+            if (Input.GetKey(KeyCode.Space))
+            {
+                _animator.SetTrigger("Atack");
+                
             }
         }
     }
