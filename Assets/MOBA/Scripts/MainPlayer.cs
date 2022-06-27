@@ -10,6 +10,7 @@ namespace MOBA
     {
         private Rigidbody _rigidbody;
         private Joystick _joystick;
+        private int _enemyDamage = 10;
 
         private bool _isRun;
         //private bool _isAtack;
@@ -65,6 +66,14 @@ namespace MOBA
             {
                 _animator.SetTrigger("Atack");
                 
+            }
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other != null && other.gameObject.tag == "EnemySword")
+            {
+                GetDamage(_enemyDamage);
             }
         }
     }

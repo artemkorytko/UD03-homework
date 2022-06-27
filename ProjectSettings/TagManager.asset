@@ -6,6 +6,8 @@ TagManager:
   tags:
   - GreenBase
   - Bot
+  - EnemySword
+  - PlayerSword
   layers:
   - Default
   - TransparentFX

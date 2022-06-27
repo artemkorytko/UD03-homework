@@ -57,6 +57,7 @@ namespace MOBA
         public virtual void GetDamage(int value)
         {
             _currentHealth -= value;
+            Debug.Log($"{name} current heath: {_currentHealth}");
             if (!IsAlive)
             {
                 OnDeath();
