@@ -1,30 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-namespace Moba
-{ 
-public class AnimatedPlayer : MovebelPlayer
-    {
-        private Animator _animator;
 
-        protected override void Aweke()
+namespace Moba
+{
+    public class AnimatedPlayer : MoveblePlayer
+    {
+        protected Animator _animator;
+
+        protected override void Awake()
         {
-            base.Aweke();
+            base.Awake();
             _animator = GetComponentInChildren<Animator>();
         }
-
-
-
 
         protected override void BeActive()
         {
             base.BeActive();
-            
+            PlayAnimation();
         }
+
         protected virtual void PlayAnimation()
         {
 
         }
     }
-
 }

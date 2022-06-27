@@ -1,9 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
 namespace Moba
 {
-    public class MovebelPlayer : BasePlayer
+    public class MoveblePlayer : BasePlayer
     {
         [SerializeField] protected float moveSpeed;
         [SerializeField] protected float rotateSpeed;
@@ -11,12 +10,13 @@ namespace Moba
         {
             Rotate();
             Move();
-            
         }
+
         protected virtual void Move()
         {
 
         }
+
         protected virtual void Rotate()
         {
 
