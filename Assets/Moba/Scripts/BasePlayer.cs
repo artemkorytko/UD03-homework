@@ -75,12 +75,12 @@ namespace Moba
         {
             if (other.tag == "Sword2")
             {
-                _currentHealth -=10;
+                GetDamage(10);
             }
             if(other.tag=="Sword1")
 
             {
-                _currentHealth -= 10;
+                GetDamage(10);
             }
             
         }
