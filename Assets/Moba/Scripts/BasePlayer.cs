@@ -71,20 +71,5 @@ namespace Moba
             _isActive = false;
             gameObject.SetActive(false);
         }
-        private void OnTriggerEnter(Collider other)
-        {
-            if (other.tag == "Sword2")
-            {
-                GetDamage(10);
-            }
-            if(other.tag=="Sword1")
-
-            {
-                GetDamage(10);
-            }
-            
-        }
-        
-        
     }
 }

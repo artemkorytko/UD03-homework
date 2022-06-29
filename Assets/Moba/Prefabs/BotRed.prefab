@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 4796549195847720624}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.49, y: 0.82, z: -17.07}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.63761, y: 0.63761, z: 0.63761}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4796549195974602154}
@@ -141,7 +141,8 @@ MonoBehaviour:
   _isActive: 0
   moveSpeed: 2
   rotationSpeed: 180
-  tag_point: Point1
+  _base: {fileID: 0}
+  _attackBase: {fileID: 0}
 --- !u!1 &4796549195974602157
 GameObject:
   m_ObjectHideFlags: 0

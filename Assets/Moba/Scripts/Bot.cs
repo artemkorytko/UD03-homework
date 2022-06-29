@@ -10,16 +10,27 @@ namespace Moba
 {
     public class Bot : MovablePlayer
     {
-        private GameObject _base;
-        public string tag_point;
+        
+        [SerializeField] GameObject _base;
+        [SerializeField] private Transform _attackBase;
         private NavMeshAgent _navMeshAgent;
 
-        private void Update()
+        protected override void Awake()
         {
-            _base=GameObject.FindGameObjectWithTag(tag_point);
+            _base=FindObjectOfType<GameObject>(_attackBase);
             _navMeshAgent = GetComponent<NavMeshAgent>();
             _navMeshAgent.enabled = true;
             _navMeshAgent.SetDestination(_base.transform.position);
+            
+            base.Awake();
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.CompareTag("Sword1"))
+            {
+                GetDamage(10);
+            }
         }
     }
 }

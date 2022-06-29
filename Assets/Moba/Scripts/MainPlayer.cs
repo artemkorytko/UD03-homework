@@ -22,7 +22,7 @@ namespace Moba
             SetActive(true);
         }
 
-        private void Update()
+        protected virtual void Update()
         {
             if (Input.GetMouseButtonDown(1))
             {
@@ -66,6 +66,14 @@ namespace Moba
             {
                 _animator.SetTrigger("Idle");
                 _isRun = false;
+            }
+        }
+        
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.CompareTag("Sword2"))
+            {
+                GetDamage(10);
             }
         }
     }
