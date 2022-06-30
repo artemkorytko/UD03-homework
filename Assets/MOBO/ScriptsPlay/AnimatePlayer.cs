@@ -4,22 +4,22 @@ namespace MOBA
 {
     public class AnimatePlayer : MoveblePlayer
     {
-        protected Animator _animator;
+        protected Animator _animator;// присваиваем переменную аниматору 
 
-        protected override void Awake()
+        protected override void Awake() // говорит что мы берем тот метод что есть у BasePlayer  и добовляем дополнительный функционал
         {
-            base.Awake();
-            _animator = GetComponentInChildren<Animator>();
+            base.Awake(); // базовое значение у BasePlayer
+            _animator = GetComponentInChildren<Animator>(); // аниматор берет компонент из детища аниматора
         }
 
 
-        protected override void BeActive()
+        protected override void BeActive() // метод наследован от MoveblePlayer
         {
-            base.BeActive();
-            PlayAnimation();
+            base.BeActive(); // базовое значение 
+            PlayAnimation();// передали метод PlayAnimation
         }
 
-        protected virtual void PlayAnimation()
+        protected virtual void PlayAnimation() // метод проиграть анимацию
         {
             
         }

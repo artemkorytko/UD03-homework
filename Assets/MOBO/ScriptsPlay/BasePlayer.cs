@@ -5,71 +5,75 @@ using UnityEngine;
 
 namespace MOBA
 {
-    public enum PlayerType
+    public enum PlayerType    // создание типа игрока, енам - именнованое цифровое значение
+
     {
-        None,
+        None = -1,
         MainPlayer,
         EnemyPlayer,
-        Bot
+        Bot,
+        transform,
+        position
     }
+
     public abstract class BasePlayer : MonoBehaviour
     {
-       [SerializeField] private PlayerType _type;
-       [SerializeField] private int _maxHealth;
-       [SerializeField] private bool _isActiveInUpdete;
-       
-       private int _currentHealth;
-       private bool _isActive;
+        [SerializeField] public PlayerType _type; // переменная  типа игрока .. можем указывать из редактора
+        [SerializeField] private int _maxHealth; // перемнная максимального знвчения здоровья 
+        [SerializeField] private bool _isActiveInUpdate; // 
+        private int _currentHealth; // переменная текущее ззначение здоровья
+        private bool _isActive; // переменная говорит активны ли мы
 
-       public bool IsAlive => _currentHealth > 0;
+        protected abstract void BeActive(); //  метод говорит что мы активны
+        public bool IsAlive => _currentHealth > 0; // переменная которая говорит, что игрок жив если текущее значение здоровья больше 0
 
-       protected  virtual void Awake()
-       {
-           _currentHealth = _maxHealth;
-       }
+        protected virtual void Awake() //  метод 
+        {
+            _currentHealth = _maxHealth; //  текущее значение здоровья равно максимальному значению здоровья
+        }
 
-       private void Update()
-       {
-           if (!_isActiveInUpdete) 
-               return;
-           if (!_isActive)
-           {
-               return;
-               
-           }
-           BeActive();
-       }
+        private void Update() // метод который отрабатывает каждый кадр 
+        {
+            if (!_isActiveInUpdate) //  есне активен в апдате
+                return; // то возвращаемся 
+            if (!_isActive)//  если мы не активны 
+            {
+                return; //  то не чего не происходит
+            }
 
-       private void FixedUpdate()
-       {
-           if(!_isActiveInUpdete)
-               return;
-           if(!_isActive)
-               return;
-           BeActive();
-       }
+            BeActive(); //  в противном случае мы активны
+        }
 
-       protected abstract void BeActive();
+        private void FixedUpdate()
+        {
+            if (_isActiveInUpdate)
+                return;
+            if (!_isActive)
+                return;
+            BeActive();
+        }
 
-       public void SetActive(bool isActive)
-       {
-           _isActive = isActive;
-       }
+        
 
-       public virtual void GetDamage(int value)
-       {
-           _currentHealth -= value;
-           if (!IsAlive)
-           {
-               OnDeath();
-           }
-       }
+        public void SetActive(bool isActive) //  метод который сделает нас активными
+        {
+            _isActive = isActive; // ??
+        }
 
-       protected virtual void OnDeath()
-       {
-           _isActive = false;
-           gameObject.SetActive(false);
-       }
+        public virtual void GetDamage (int value) // метод в котором гооврится сколько урона мы наносим
+        {
+            _currentHealth -= value; // текущее значение здоровья минус значение урона (-= отнять и присвоить)
+            if (!IsAlive) //  если мы не живы 
+            {
+                OnDeath();//  мы умираем
+            }
+        }
+
+        protected virtual void OnDeath()  //
+        {
+            _isActive = false; // выключаем активность
+            gameObject.SetActive(false); // отключаем себя когда проусхоит смерть
+        }
        
     }
 }

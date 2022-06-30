@@ -4,19 +4,21 @@ namespace MOBA
 {
     public class MoveblePlayer : BasePlayer
     {
-        [SerializeField] protected float moveSpeed;
-        [SerializeField] protected float rotateSpeed;
-        protected override void BeActive()
+        [SerializeField] protected float moveSpeed; // переменная в которой мы ставим скорость передвижения 
+        [SerializeField] protected float rotateSpeed; // переменнная в которой мы ставим скорость поворота
+        
+        protected override void BeActive() // в методе быть активным 
         {
-            Rotate();
-            Move();
+            Rotate();// передали метод
+            Move();// передали метод
         }
 
-        protected virtual void Move()
+        protected virtual void Move() // метод движения 
         {
             
         }
-        protected virtual void Rotate()
+        
+        protected virtual void Rotate() // метод вращения
         {
             
         }
