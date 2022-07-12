@@ -1,10 +1,6 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
-using UnityEngine.UI;
 
 public class Calculator : MonoBehaviour
 {
@@ -20,11 +16,16 @@ public class Calculator : MonoBehaviour
     int bracketFinishCount;
     int numberCount;
 
+    private void Start()
+    {
+        logic = new Logic();
+    }
+
     public void StartCalculate()
     {
-        if (IsValidity())
+        if (IsValidity() && errorPanel.gameObject.activeSelf!=true)
         {
-            //Start Logic
+            _inputField.text = logic.CheckBracketsAndCalculate(_inputField.text);
         }
     }
 
