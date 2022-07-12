@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Calculator : MonoBehaviour
 {
-    [SerializeField] private Logic logic;
     [SerializeField] private GameObject errorPanel;
     [SerializeField] private TMP_Text errorText;
     [SerializeField] private TMP_InputField _inputField;
@@ -15,6 +14,7 @@ public class Calculator : MonoBehaviour
     int bracketStartCount;
     int bracketFinishCount;
     int numberCount;
+    private Logic logic;
 
     private void Start()
     {

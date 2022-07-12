@@ -1,8 +1,7 @@
 using System;
-using UnityEngine;
 using System.Globalization;
 
-public class Logic : MonoBehaviour
+public class Logic 
 {
     public string CheckBracketsAndCalculate(string workString)
     {
