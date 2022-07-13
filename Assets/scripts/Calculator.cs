@@ -8,12 +8,12 @@ public class Calculator : MonoBehaviour
     [SerializeField] private TMP_Text errorText;
     [SerializeField] private TMP_InputField _inputField;
     
-    string input;
-    char[] charMas;
-    int signCount;
-    int bracketStartCount;
-    int bracketFinishCount;
-    int numberCount;
+    private string input;
+    private char[] charMas;
+    private int signCount;
+    private int bracketStartCount;
+    private int bracketFinishCount;
+    private int numberCount;
     private Logic logic;
 
     private void Start()

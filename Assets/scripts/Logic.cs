@@ -1,5 +1,6 @@
 using System;
 using System.Globalization;
+using UnityEngine;
 
 public class Logic 
 {
@@ -47,7 +48,7 @@ public class Logic
         return workString;
         }
 
-        private static string CalculateString(string calc)
+        private string CalculateString(string calc)
         {
             bool isEnd = false;
             do
@@ -118,22 +119,15 @@ public class Logic
                             return calc;
                         }
 
-                        if (sign=="+")
+                        if (float.TryParse(value1, NumberStyles.Any, new CultureInfo("en-US"), out var _value1) && float.TryParse(value2, NumberStyles.Any, new CultureInfo("en-US"), out var _value2))
                         {
-                            float.TryParse(value1, NumberStyles.Any, new CultureInfo("en-US"), out var _value1);
-                            float.TryParse(value2, NumberStyles.Any, new CultureInfo("en-US"), out var _value2);
-                            result = $"{_value1 + _value2}";
+                            result = sign=="+" ? $"{_value1 + _value2}" : $"{_value1 - _value2}";
                             result = ChangePoint(result);
-                            calc = calc.Replace(value1 + "+" + value2, result);
-                        
+                            calc = calc.Replace(value1 + sign + value2, result);
                         }
                         else
                         {
-                            float.TryParse(value1, NumberStyles.Any, new CultureInfo("en-US"), out var _value1);
-                            float.TryParse(value2, NumberStyles.Any, new CultureInfo("en-US"), out var _value2);
-                            result = $"{_value1 - _value2}";
-                            result = ChangePoint(result);
-                            calc = calc.Replace(value1 + "-" + value2, result);
+                            Debug.Log("Some problem with TryParse in CalculateString method");
                         }
                     }
                 }
@@ -145,7 +139,7 @@ public class Logic
             return calc;
         }
         
-        private static string DeletionOrMultiplication(string calc, string sign)
+        private string DeletionOrMultiplication(string calc, string sign)
         {
             string result = "";
             string value1 = "";
@@ -182,28 +176,28 @@ public class Logic
                     i++;
                 }
             } while (!isValue2);
-                            
-            float.TryParse(value1, NumberStyles.Any, new CultureInfo("en-US"), out var _value1);
-            float.TryParse(value2, NumberStyles.Any, new CultureInfo("en-US"), out var _value2);
 
-            if (sign=="*")
+            if (float.TryParse(value1, NumberStyles.Any, new CultureInfo("en-US"), out var _value1) && float.TryParse(value2, NumberStyles.Any, new CultureInfo("en-US"), out var _value2))
             {
-                result = $"{_value1 * _value2}";
-                result = ChangePoint(result);
-                calc = calc.Replace(value1 + "*" + value2, result); 
+                if (sign=="*")
+                {
+                    result = $"{_value1 * _value2}";
+                    result = ChangePoint(result);
+                    calc = calc.Replace(value1 + "*" + value2, result); 
+                }
+                else
+                {
+                    result = $"{_value1 / _value2}";
+                    result = ChangePoint(result);
+                    calc = calc.Replace(value1 + "/" + value2, result); 
+                }
+                return calc;
             }
-            else
-            {
-                result = $"{_value1 / _value2}";
-                result = ChangePoint(result);
-                calc = calc.Replace(value1 + "/" + value2, result); 
-            }
-            
-
+            Debug.Log("Some problem with TryParse in DeletionOrMultiplication method");
             return calc;
         }
         
-        private static string ChangePoint(string value) //если после переводов в строке запятая, вместо точки (дробь)
+        private string ChangePoint(string value) //если после переводов в строке запятая, вместо точки (дробь)
         {
             if (value.Contains(","))
             {
