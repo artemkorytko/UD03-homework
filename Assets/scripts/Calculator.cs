@@ -23,7 +23,7 @@ public class Calculator : MonoBehaviour
 
     public void StartCalculate()
     {
-        if (IsValidity() && errorPanel.gameObject.activeSelf!=true)
+        if (IsValidity() && IsValuesValidity(_inputField.text) && errorPanel.gameObject.activeSelf!=true)
         {
             _inputField.text = logic.CheckBracketsAndCalculate(_inputField.text);
         }
@@ -191,7 +191,7 @@ public class Calculator : MonoBehaviour
         return true;
     }
     
-    public bool IsSign(char ch) 
+    private bool IsSign(char ch) 
     {
         if (ch=='+' || ch=='-' || ch=='*' || ch=='/' )
         {
@@ -201,5 +201,30 @@ public class Calculator : MonoBehaviour
         {
             return false;
         }
+    }
+
+    private bool IsValuesValidity(string workString)
+    {
+        string value = "";
+        for (int i = 0; i < workString.Length; i++)
+        {
+            if (Char.IsNumber(workString[i]) || workString[i]=='.')
+            {
+                value += workString[i];
+            }
+            else if (!Char.IsNumber(workString[i]) && workString[i]!='.')
+            {
+                if (value.IndexOf(".")!=value.LastIndexOf("."))
+                {
+                    errorPanel.gameObject.SetActive(true);
+                    _inputField.readOnly = true;
+                    errorText.text = "Error! One of values have two or more points!";
+                    return false;
+                }
+                value = "";
+            }
+        }
+
+        return true;
     }
 }
