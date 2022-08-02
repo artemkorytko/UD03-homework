@@ -4761,9 +4761,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1014111029}
-        m_TargetAssemblyTypeName: CalculatorScript, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 1014111031}
+        m_TargetAssemblyTypeName: AdvancedCalculator, Assembly-CSharp
+        m_MethodName: ClickDecimal
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -24,6 +24,18 @@ public class AdvancedCalculator : MonoBehaviour
             _text.text = _text.text + $"{val}";
         }
     }
+    public void ClickDecimal(string val)
+    {
+        Debug.Log(message: $"check val: {val}");
+        if (_text.text == "0")
+        {
+            _text.text = $"{val}";
+        }
+        else
+        {
+            _text.text = _text.text + $"{val}";
+        }
+    }
     public void ClickOperation(string val)
     {
         _value1 = double.Parse(_text.text);
