@@ -97,8 +97,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60ae3535656393548b7bf2fc8a1de3a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveToZ: {x: 0, y: 0, z: 10}
-  moveToY: {x: 0, y: 5, z: 10}
+  finish: {x: 0, y: 0, z: 10}
+  finishJump: {x: 0, y: 5, z: 10}
   speed: 3
   rotateSpeed: 90
 --- !u!1 &1979837979041145591
