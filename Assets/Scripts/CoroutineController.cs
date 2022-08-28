@@ -29,11 +29,11 @@ public class CoroutineController : MonoBehaviour
         if (_isFinish && transform.position == Vector3.zero && transform.rotation == Quaternion.Euler(0,0,0))
         {
             _isFinish = false;
-            StartCoroutine(MoveForwardCoroutine(finish, finishJump));
+            StartCoroutine(MoveFromCoroutine(finish, finishJump));
         }
     }
 
-    private IEnumerator MoveForwardCoroutine(Vector3 moveToZ, Vector3 moveToY)
+    private IEnumerator MoveFromCoroutine(Vector3 moveToZ, Vector3 moveToY)
     {
         _isMoving = true;
         
