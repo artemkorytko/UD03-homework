@@ -11,24 +11,14 @@ public class UniTaskController : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float rotateSpeed;
     
-    private string _finishText;
-    private bool _isRestart;
+    private string _finishText = "Woohoo! UniTasks is working!";
     public static event Action<string, Color> UniTaskFinished;
     
-    private void Start()
+    public void Start()
     {
-        _finishText = "Woohoo! UniTasks is working!";
-        _isRestart = false;
         MoveForward(finish);
     }
     
-    private void Update()
-    {
-        if (IsReadToStartMove() && _isRestart)
-        {
-            Start();
-        }
-    }
 
     async UniTask MoveForward(Vector3 moveToZ)
     {
@@ -82,7 +72,6 @@ public class UniTaskController : MonoBehaviour
 
     private void Finish()
     {
-        _isRestart = true;
         UniTaskFinished?.Invoke(_finishText, Color.red);
     }
     

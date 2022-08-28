@@ -6,15 +6,18 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject textComponent;
-    
+
     private PlayersPool _pool;
     private GameObject _currentPlayer;
+    private CoroutineController _coroutineController;
+    private UniTaskController _uniTaskController;
 
     private void Awake()
     {
         _pool = GetComponent<PlayersPool>();
         _currentPlayer = null;
     }
+    
 
     public void StartUpdatePlayer()
     {
@@ -28,6 +31,8 @@ public class GameManager : MonoBehaviour
         BackCurrentPlayerToPool();
         _currentPlayer = _pool.GetPlayerByIndex(1);
         SetStartPlayerParams();
+        _coroutineController = GetComponent<CoroutineController>();
+        _coroutineController.Start();
     }
     
     public void StartUniTaskPlayer()
@@ -35,6 +40,8 @@ public class GameManager : MonoBehaviour
         BackCurrentPlayerToPool();
         _currentPlayer = _pool.GetPlayerByIndex(2);
         SetStartPlayerParams();
+        _uniTaskController = GetComponent<UniTaskController>();
+        _uniTaskController.Start();
     }
 
     private void BackCurrentPlayerToPool()

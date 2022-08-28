@@ -14,23 +14,14 @@ public class CoroutineController : MonoBehaviour
     [SerializeField] private float rotateSpeed;
     
     private string _finishText = "Woohoo! Coroutines is working!";
-    private bool _isRestart;
-    
-    public static event Action<string, Color> CoroutineFinished;
 
-    private void Start()
+    public static event Action<string, Color> CoroutineFinished;
+    
+    public void Start()
     {
-        _isRestart = false;
         StartCoroutine(MoveForward(finish));
     }
-
-    private void Update()
-    {
-        if (IsReadToStartMove() && _isRestart)
-        {
-            Start();
-        }
-    }
+    
 
     private IEnumerator MoveForward(Vector3 moveToZ)
     {
@@ -82,15 +73,7 @@ public class CoroutineController : MonoBehaviour
 
     private void Finish()
     {
-        _isRestart = true;
         CoroutineFinished?.Invoke(_finishText, Color.blue);
     }
-
-    private bool IsReadToStartMove()
-    {
-        if (transform.position == Vector3.zero && transform.rotation == Quaternion.Euler(0, 0, 0))
-            return true;
-        else
-            return false;
-    }
+    
 }
