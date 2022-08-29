@@ -18,7 +18,6 @@ public class GameManager : MonoBehaviour
         _currentPlayer = null;
     }
     
-
     public void StartUpdatePlayer()
     {
         BackCurrentPlayerToPool();
@@ -31,8 +30,8 @@ public class GameManager : MonoBehaviour
         BackCurrentPlayerToPool();
         _currentPlayer = _pool.GetPlayerByIndex(1);
         SetStartPlayerParams();
-        _coroutineController = GetComponent<CoroutineController>();
-        _coroutineController.Start();
+        _coroutineController = FindObjectOfType<CoroutineController>();
+        _coroutineController.StartMoving();
     }
     
     public void StartUniTaskPlayer()
@@ -40,8 +39,8 @@ public class GameManager : MonoBehaviour
         BackCurrentPlayerToPool();
         _currentPlayer = _pool.GetPlayerByIndex(2);
         SetStartPlayerParams();
-        _uniTaskController = GetComponent<UniTaskController>();
-        _uniTaskController.Start();
+        _uniTaskController = FindObjectOfType<UniTaskController>();
+        _uniTaskController.StartMoving();
     }
 
     private void BackCurrentPlayerToPool()

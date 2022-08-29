@@ -14,7 +14,7 @@ public class UniTaskController : MonoBehaviour
     private string _finishText = "Woohoo! UniTasks is working!";
     public static event Action<string, Color> UniTaskFinished;
     
-    public void Start()
+    public void StartMoving()
     {
         MoveForward(finish);
     }

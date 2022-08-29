@@ -17,7 +17,7 @@ public class CoroutineController : MonoBehaviour
 
     public static event Action<string, Color> CoroutineFinished;
     
-    public void Start()
+    public void StartMoving()
     {
         StartCoroutine(MoveForward(finish));
     }
