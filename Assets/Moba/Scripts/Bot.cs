@@ -24,6 +24,11 @@ namespace Moba
             
             base.Awake();
         }
+        
+        private void Start()
+        {
+            SetActive(true);
+        }
 
         private void OnTriggerEnter(Collider other)
         {

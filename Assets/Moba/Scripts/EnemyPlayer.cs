@@ -18,6 +18,8 @@ namespace Moba
             
             _enemyrb = GetComponent<Rigidbody>();
             _agent = GetComponent<NavMeshAgent>();
+            _agent.SetDestination(_player.transform.position);
+            _agent.enabled = true;
         }
         
         protected virtual void Start()
@@ -40,13 +42,23 @@ namespace Moba
             {
                 _nearbyenemy = true;
             }
+            if (_distance > 2f)
+            {
+                _nearbyenemy = false;
+            }
         }
 
         protected override void Move()
         {
             if (!_nearbyenemy)
             {
+                _agent.enabled = true;
                 _enemyrb.MovePosition(_enemyrb.position + transform.forward * (moveSpeed * Time.deltaTime));
+            }
+
+            if (_nearbyenemy)
+            {
+                _agent.enabled = false;
             }
         }
 
@@ -65,7 +77,7 @@ namespace Moba
             }
             if (_nearbyenemy)
             {
-                _agent.enabled = false;
+                _agent.enabled = true;
                 _animator.SetTrigger("Attack");
             }
         }

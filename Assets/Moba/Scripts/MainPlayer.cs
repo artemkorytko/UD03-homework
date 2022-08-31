@@ -40,7 +40,7 @@ namespace Moba
         {
             if (_joystick.Direction != Vector2.zero)
             {
-                _rigidbody.MovePosition(_rigidbody.position+transform.forward*moveSpeed*Time.deltaTime);
+                _rigidbody.MovePosition(_rigidbody.position+transform.forward*(moveSpeed*Time.deltaTime));
             }
         }
 
