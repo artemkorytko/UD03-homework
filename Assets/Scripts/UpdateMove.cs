@@ -15,43 +15,42 @@ public class UpdateMove : MovableObject
     {
         if(!_isAlive) return;
 
-        if (_currentState.Equals(State.MOVE))
+        switch (_currentState)
         {
-            MoveForward();
-            if (Vector3.Distance(_transform.position,_endPosition)<=0.1)
-            {
-                _currentState = State.JUMP;
-            }
-        }
-        
-        if (_currentState.Equals(State.JUMP))
-        {
-            Jump();
-            Rotate(new Vector3(0,90,0));
-            if (_transform.position.y - jumpHeight >= 0)
-            {
-                _currentState = State.FALL;
-            }
-        }
-        
-        if (_currentState.Equals(State.FALL))
-        {
-           Fall();
-           Rotate(new Vector3(0,180,0));
-           if (_transform.position.y <= 0)
-           {
-               _currentState = State.MOVE_BACK;
-           }
-        }
-        
-        if (_currentState.Equals(State.MOVE_BACK))
-        {
-            MoveForward();
-            if (Vector3.Distance(_transform.position,_startPoint)<=0.1)
-            {
-                _isAlive = false;
-                print("Update move completed");
-            }
+            case State.MOVE:
+                MoveForward();
+                if (Vector3.Distance(_transform.position, _endPosition) <= 0.1)
+                {
+                    _currentState = State.JUMP;
+                }
+                break;
+            
+            case State.JUMP:
+                Jump();
+                Rotate(new Vector3(0, 90, 0));
+                if (_transform.position.y - jumpHeight >= 0)
+                {
+                    _currentState = State.FALL;
+                }
+                break;
+            
+            case State.FALL:
+                Fall();
+                Rotate(new Vector3(0, 180, 0));
+                if (_transform.position.y <= 0)
+                {
+                    _currentState = State.MOVE_BACK;
+                }
+                break;
+            
+            case State.MOVE_BACK:
+                MoveForward();
+                if (Vector3.Distance(_transform.position, _startPoint) <= 0.1)
+                {
+                    _isAlive = false;
+                    print("Update move completed");
+                }
+                break;
         }
     }
 }
